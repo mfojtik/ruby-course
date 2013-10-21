@@ -1,0 +1,619 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>reveal.js - The HTML Presentation Framework</title>
+
+    <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+    <meta name="author" content="Hakim El Hattab">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <!-- Any section element inside of this container is displayed as a slide -->
+      <div class="slides">
+        <section>
+          <h1>Ruby Course</h1>
+          <h3><i>Day 1</i></h3>
+          <p>
+          <small><a href="http://ruby01.mfojtik.im">ruby01.mfojtik.im</a></small>
+          </p>
+        </section>
+
+        <section>
+          <h2>Today</h2>
+          <ul>
+            <li>Introduction, history, philosophy</li>
+            <li>Installing tools</li>
+            <li><code>puts 'Hello World'</code></li>
+            <li><code>String, Fixnum, Boolean, nil, Array, Hash</code></li>
+            <li><code>if, unless, else, elsif</code></li>
+            <li>
+              <code>while, until, for, Integer.times</code>
+            </li>
+            <li>Defining methods</li>
+            <li><code>File.open()</code></li>
+            <li>Block, Proc, Lambda</li>
+          </ul>
+        </section>
+
+        <!-- Example of nested vertical slides -->
+        <section>
+          <section>
+            <h2>/ˈruːbi/</h2>
+            <blockquote>
+              The name "Ruby" originated during an online chat session between
+              Matsumoto and Keiju Ishitsuka on February 24, 1993, before any
+              code had been written for the language.<br/><br/>
+              <small>http://en.wikipedia.org/wiki/Ruby_(programming_language)</small>
+            </blockquote>
+          </section>
+          <section>
+            <h2>Ruby is</h2>
+            <ul>
+              <li>balance between <b>functional programming</b> and <b>imperative programming</b></li>
+              <li>focusing on making programming more <b>natural</b></li>
+              <li><b>fully object-oriented</b></li>
+              <li>easy to <b>understand</b></li>
+            </ul>
+          </section>
+          <section>
+            <h2>History</h2>
+            <p>
+              First public release of Ruby 0.95 in <b>japanese</b> on December
+              1995.
+            </p>
+          </section>
+          <section>
+            <img src="matz.jpg"/>
+          </section>
+          <section>
+            <p>First official <b>English</b> mailing list in 1993, following the Ruby
+            <b>1.3</b> release</p>
+          </section>
+          <section>
+            <p>Ruby <b>1.8</b> released in August 2003, the most used and most
+              stable release (retired in 2013)</p><br/><br/>
+            <blockquote>
+              <small>
+              In 2005, the first release of <b>Ruby on Rails</b> framework. RoR
+              is often credited with making the Ruby famous.</small>
+            </blockquote>
+          </section>
+          <section>
+            <p>Ruby <b>1.9</b> introduced in December 2007 with a lot of
+              backward incompatible changes and features.</p>
+          </section>
+          <section>
+            <h2>Philosophy</h2>
+            <blockquote>
+              Often people, especially computer engineers, focus on the
+              machines. They think, "By doing this, the machine will run faster.
+              By doing this, the machine will run more effectively. By doing
+              this, the machine will something something something." They are
+              focusing on machines. But in fact we need to focus on humans, on
+              how humans care about doing programming or operating the
+              application of the machines. We are the masters. They are the
+              slaves. <small>- <i>matz</i></small>
+            </blockquote>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>Tools</h1>
+          </section>
+          <section>
+            <h2>Installing dependencies</h2>
+            <pre><code>~ → su -c 'yum install -y gcc gcc-c++ make patch \
+    libffi-devel openssl-devel zlib \
+    zlib-devel readline readline-devel ncurses-devel libxml2-devel \
+    libxslt-devel curl git sqlite libsqlite3x-devel libcurl-devel'
+</code></pre>
+<p>or...</p>
+            <pre><code>~ → curl http://ruby01.mfojtik.im/boot.me | bash
+</code></pre>
+          </section>
+          <section>
+            <h2>Installing Ruby</h2>
+          </section>
+          <section>
+            <h2>Fedora manages it for you:</h2>
+            <pre><code>→ su -c 'yum install -y ruby ruby-devel rubygems ruby-irb'</code></pre>
+          </section>
+          <section>
+            <h2>or manage it yourself...</h2>
+            <a
+              href="https://github.com/sstephenson/rbenv">github.com/sstephenson/rbenv</a><br/>
+            or<br/>
+            <a href="https://rvm.io/">rvm.io</a>
+          </section>
+          <section>
+            <h2>$ ruby script.rb</h2>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>Hello World</h1>
+          </section>
+          <section>
+            <h2>IRB/pry</h2>
+            <pre><code data-trim contenteditable>
+irb(main):001:0> puts 'Hello world!'
+Hello world!
+=> nil
+              </code></pre>
+              <p>gem install pry</p>
+            <pre><code data-trim contenteditable>
+[1] pry(main)> puts "Hello world!"
+Hello world!
+=> nil
+              </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Coding Style</h2>
+            <img src="psy-gangnam-style.jpg"/>
+          </section>
+          <section>
+            <h2>There are always many ways...</h2>
+          </section>
+          <section>
+            <blockquote>
+              Always code as if the person who will maintain <br/>(or review!) your code is a maniac
+            serial killer that knows where you live.
+          </blockquote><br/>
+            <p><a href="http://github.com/bbatsov/ruby-style-guide">github.com/bbatsov/ruby-style-guide</a></p>
+          </section>
+          <section>
+            <h2>Typical structure of a Ruby script</h2>
+            <pre><code class="ruby">#!/usr/bin/ruby # (optional)
+#
+# Description of your program.
+#
+require GEM1
+require GEM2
+
+# Definitions of methods/classes/modules/etc...
+
+puts 'Hello world!'
+            </code></pre>
+          </section>
+          <section>
+            <h2>lib/module/class.rb</h2>
+            <p>
+            Not really required by the Ruby interpreter itself.<br/> Just improves the readability.
+            </p>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Data types</h1>
+          </section>
+          <section>
+            <h1>"hello" <small>aka</small> String</h1>
+          </section>
+          <section>
+            <blockquote>Strings are used for storing and manipulating text in
+              Ruby. Strings are written between quotation marks.
+            </blockquote>
+          </section>
+          <section>
+            <h2>Making a String</h2>
+            <pre><code contenteditable class="ruby">
+name = "Robert"
+
+# is equivalent to:
+
+name = String.new("Robert")
+            </code></pre>
+          </section>
+          <section>
+            <h2>Working with Strings</h2>
+            <pre><code contenteditable class="ruby">
+name = "Robert"
+
+name.uppercase
+# => "ROBERT"
+
+"Hello #{name}"
+# => "Hello Robert"
+
+"Hello " + name
+# => "Hello Robert"
+
+'Hello #{name}'
+# => "Hello \#{name}" <- Be carefull here!
+            </code></pre>
+          </section>
+          <section>
+            <h2>Double vs. Single quotes</h2>
+            <p>
+              Use 'single quotes' <b>only</b> when you know that the string will
+              not be changed.
+            </p>
+          </section>
+          <section>
+            <h2>String vs. Symbol</h2>
+            <p> Symbols are <b>frozen</b> Strings. In Ruby the <code>#frozen</code>
+            method is used to mark objects to prevent their future modification.
+            </p>
+            <pre><code contenteditable class="ruby">
+name = "Robert"
+name + " Miller"
+# => "Robert Miller"
+
+name = :robert
+name + " Miller"
+# => NoMethodError: undefined method `+' for :robert:Symbol
+            </code></pre>
+          </section>
+          <section>
+            <h2>Where to use Symbol?</h2>
+          </section>
+          <section>
+            <h1>Numbers <small>aka</small> Fixnum</h1>
+          </section>
+          <section>
+            <h1>[] <small>aka</small> Array.new</h1>
+          </section>
+          <section>
+            <blockquote>
+              An array is a Ruby data type that holds an ordered collection of
+              values, which can be any type of object including other arrays.
+            </blockquote>
+          </section>
+          <section>
+            <h2>Defining empty Array</h2>
+            <pre><code contenteditable class="ruby">
+names = []
+
+# or
+
+names = Array.new
+            </code></pre>
+          </section>
+          <section>
+            <h2>Adding items to Array</h2>
+            <pre><code contenteditable class="ruby">
+names = [ "Mike", "John", "Steven" ]
+# => ["Mike", "John", "Steven"]
+
+fruits = Array.new(3, "apple")
+# => ["apple", "apple", "apple"]
+
+fruits << "cherry"
+# => ["apple", "apple", "apple", "cherry"]
+            </code></pre>
+          </section>
+          <section>
+            <h2>Iterating Arrays</h2>
+            <pre><code contenteditable class="ruby">
+names = [ "Mike", "John", "Steven" ]
+
+names[1]
+# "John"
+
+names.each do |name|
+  puts "Hello #{name}!"
+end
+
+# Hello Mike!
+# Hello John!
+# Hello Steven!
+            </code></pre>
+          </section>
+          <section>
+            <h2>Manipulating Array</h2>
+            <pre><code contenteditable class="ruby">
+names = [ "Mike", "John", "Steven" ]
+
+names.map { |n| n+"san" }
+
+# => ["Mike-san", "John-san", "Steven-san"]
+            </code></pre>
+          </section>
+          <section>
+            <h2>Searching Array</h2>
+            <pre><code contenteditable class="ruby">
+names = [ "Mike", "John", "Steven" ]
+
+names.find { |name| name == 'Steven' }
+# => "Steven"
+
+names.reject { |name| name == 'Steven' }
+# => ["Mike", "John"]
+            </code></pre>
+          </section>
+          <section>
+            <h2>Deleting items from Array</h2>
+            <pre><code contenteditable class="ruby">
+names = [ "Mike", "John", "Steven" ]
+
+names.delete "John"
+# => "John"
+
+names
+# => ["Mike", "Steven"]
+            </code></pre>
+          </section>
+          <section>
+            <h2>More about Arrays</h2>
+            <a href="http://ruby-doc.org/core-2.0.0/Array.html">ruby-doc.org/core-2.0.0/Array.html</a>
+          </section>
+          <section>
+            <h1>Hash</h1>
+          </section>
+          <section>
+            <blockquote>
+            Hashes are collections of key-value pairs. Like arrays, they have
+            values associated with indices, but in the case of hashes, the
+            indices are called "keys." Keys can be anything that's hashable,
+            such as integers, strings, or symbols, but they must be unique for
+            the hash they belong. The values to which keys refer can be any Ruby
+            object.
+            </blockquote>
+          </section>
+          <section>
+            <h2>Creating a new Hash</h2>
+            <pre><code contenteditable class="ruby">
+drinks = { mike: 'beer', steven: 'vodka', robert: 'watter' }
+# => {:mike=>"beer", :steven=>"vodka", :robert=>"watter"}
+
+drinks[:peter]
+# => nil
+
+drinks = Hash.new("vodka")
+# => {}
+drinks[:peter]
+# => "vodka"
+            </code></pre>
+          </section>
+          <section>
+            <h2>Iterating through Hash</h2>
+            <pre><code contenteditable class="ruby">
+drinks = { mike: 'beer', steven: 'vodka', robert: 'watter' }
+
+drinks.each do |name, drink|
+  puts "#{name} has #{drink}"
+end
+
+# mike has beer
+# steven has vodka
+# robert has watter
+            </code></pre>
+          </section>
+          <section>
+            <h2>Note about coding style</h2>
+            <pre><code contenteditable class="ruby">
+drinks = { mike: 'beer', steven: 'vodka', robert: 'watter' }
+
+drinks = {
+  mike: 'beer',
+  steven: 'vodka',
+  robert: 'watter'
+}
+            </code></pre>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Control Flow</h1>
+          </section>
+          <section>
+            <h2>if</h2>
+          </section>
+          <section>
+            <h2>Many ways how to use 'if'</h2>
+            <pre><code contenteditable class="ruby">
+if condition
+  puts 'condition is not "nil" nor "false"'
+end
+
+# is equivalent to:
+
+puts 'condition is not "nil" nor "false"' if condition
+            </code></pre>
+          </section>
+          <section>
+            <h2>Where not to use 'if'</h2>
+            <pre><code contenteditable class="ruby">
+# wrong!
+
+name = nil
+
+if !name
+  name = 'Mike'
+end
+
+# correct:
+
+name ||= 'Mike'
+
+# => name = name || 'Mike'
+
+            </code></pre>
+          </section>
+         <section>
+            <h2>unless</h2>
+          </section>
+
+          <section>
+            <h2>Unless is negation of 'if'</h2>
+            <pre><code contenteditable class="ruby">
+unless condition
+  # condition is false or nil
+end
+
+# Set the name to 'Mike' only if the person is not a robot.
+name = 'Mike' unless person.robot?
+            </code></pre>
+        </section>
+
+        <section>
+          <h2>else/elsif</h2>
+        </section>
+
+        <section>
+          <h2>When 'if' is not enough</h2>
+            <pre><code contenteditable class="ruby">
+if condition == 1
+  # do this when condition is equal 1
+elseif condition == 2
+  # do this when condition is equal 2
+else
+  # otherwise do this.
+end
+            </code></pre>
+        </section>
+        <section>
+          <h2>Beware!</h2>
+          <p>
+            If you find yourself using more then one <code>elsif</code> in your code, you should
+            think about <b>refactoring</b> it or using the
+            <code>case</code> statement instead.
+          </p>
+          <pre><code contenteditable class="ruby">
+case condition
+  when 1 then # do something when condition is equal 1
+  when 2 then # do something when condition is equal 2
+  else
+    # otherwise do this.
+end
+          </code></pre>
+        </section>
+        </section>
+        <section>
+          <section>
+            <h1>def method()</h1>
+          </section>
+          <section>
+            <h2>Good methods are</h2>
+            <ul>
+              <li><b>reusable</b></li>
+              <li><b>small</b></li>
+              <li><b>easy to understand</b></li>
+              <li><b>documented</b></li>
+            </ul>
+          </section>
+          <section>
+            <h2>Defining methods</h2>
+            <pre><code contenteditable class="ruby">
+def deliver_mail_to(address)
+  # method body
+end
+            </code></pre>
+          </section>
+          <section>
+            <h2>method?!</h2>
+            <pre><code contenteditable class="ruby">
+def connection_is_active?
+  # return true if connection is active
+end
+
+def freeze!
+  # change the internal object representation
+  # we don't care about return value
+end
+            </code></pre>
+          </section>
+          <section>
+            <h2>Method attributes</h2>
+            <pre><code contenteditable class="ruby">
+def deliver_to(name, surname, address, post_code)
+end
+
+def deliver_to(recipient={})
+  # recipient[:name], recipient[:surname]...
+end
+
+def deliver_to(*recipient_attrs)
+  # recipient_attrs is an Array, like ARGV
+end
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>Returning values from methods</h2>
+            <pre><code contenteditable class="ruby">def process_invoice
+  invoice
+end
+
+def process_invoice
+  if something
+    invoice
+  else
+    other_invoice
+  end
+end
+
+def process_invoice
+  return old_invoice if no_new_invoice
+end
+            </code></pre>
+            <p><b>Use <code>return</code> only when you want to emphasize it.</b></p>
+          </section>
+
+        </section>
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
